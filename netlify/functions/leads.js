@@ -1,4 +1,4 @@
-const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzi816SlMi7CTC8iVjXYH6BehwwsufanwF3_HFOuBxACG_krtFeAQEVNiPdkwWgrGmkpw/exec";
+const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbza2VFB0G_gNn7L_9BSAlzrIqI1RxlYy-oQ1V4xzRdBZcCqSCZatrEpTIN_Bn5Y7X4h/exec";
 
 exports.handler = async function (event) {
   if (event.httpMethod !== "POST") {
@@ -27,7 +27,7 @@ exports.handler = async function (event) {
     const upstream = await fetch(SHEET_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, phone, email, source: "outsmart-self-mastery-landing", status: "Lead", submittedAt: new Date().toISOString() }),
+      body: JSON.stringify({ name, fullName: name, phone, email, paymentStatus: "Pending", notes: "Registration lead; payment not verified", source: "outsmart-self-mastery-landing", submittedAt: new Date().toISOString() }),
       redirect: "follow",
       signal: AbortSignal.timeout(12000)
     });
