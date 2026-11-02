@@ -1,6 +1,6 @@
 "use strict";
 
-const RAZORPAY_URL = "https://rzp.io/rzp/1c6FK6hq";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCuhpd9jChVmh8Gz93kxBDOZRGGIU1uOWRU-VECScAfdXGGG9OTjYkdRnEViO0Z9cPw/exec";
 
 const form = document.getElementById("enroll-form");
 const status = document.getElementById("form-status");
@@ -15,16 +15,10 @@ function errorFor(key, message) {
   document.getElementById(`${key}-error`).textContent = message;
 }
 
-function validRazorpayLink(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" && (url.hostname === "rzp.io" || url.hostname === "razorpay.com" || url.hostname.endsWith(".razorpay.com"));
-  } catch { return false; }
-}
-
 form.addEventListener("submit", async event => {
   event.preventDefault();
   status.textContent = "";
+  status.style.color = "";
   const name = fields.name.value.trim();
   const phone = fields.phone.value.trim();
   const email = fields.email.value.trim();
@@ -34,26 +28,80 @@ form.addEventListener("submit", async event => {
   errorFor("email", !fields.email.validity.valid || !email ? "Enter a valid email address." : "");
   const invalid = Object.values(fields).find(field => field.getAttribute("aria-invalid") === "true");
   if (invalid) { invalid.focus(); return; }
-  if (!validRazorpayLink(RAZORPAY_URL)) {
-    status.textContent = "Enrollment link is being set up. Please check back shortly.";
-    return;
-  }
+
   const button = form.querySelector('button[type="submit"]');
+  const originalButtonContent = button.innerHTML;
   button.disabled = true;
-  status.textContent = "Saving your details…";
+  status.style.color = "#0b80dd";
+  status.textContent = "Reserving your seat…";
+
+  const payload = {
+    name,
+    fullName: name,
+    phone,
+    email,
+    website: form.elements.website ? form.elements.website.value : "",
+    paymentStatus: "Free / Registered",
+    notes: "First Time Manager Playbook Bootcamp registration",
+    source: "first-time-manager-playbook-bootcamp",
+    submittedAt: new Date().toISOString()
+  };
+
+  let saved = false;
+
+  // 1. Primary submission via local/Netlify backend function
   try {
     const response = await fetch("/.netlify/functions/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, phone, email, website: form.elements.website.value })
+      body: JSON.stringify(payload)
     });
-    if (!response.ok) throw new Error("Lead save failed");
-    const result = await response.json();
-    if (result.saved !== true) throw new Error("Lead save failed");
-    status.textContent = "Details saved. Opening Razorpay…";
-    window.location.assign(RAZORPAY_URL);
-  } catch {
-    status.textContent = "Could not save your details. Please try again.";
+    if (response.ok) {
+      const result = await response.json();
+      if (result.saved === true) {
+        saved = true;
+      }
+    }
+  } catch (e) {
+    // Backend endpoint unreachable or running in static context
+  }
+
+  // 2. Direct fallback to Google Apps Script if backend function was unavailable
+  if (!saved) {
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      saved = true;
+    } catch (e) {
+      // Both attempts failed
+    }
+  }
+
+  if (saved) {
+    status.style.color = "#027a48";
+    status.textContent = "✓ You are registered! Your seat is reserved. Zoom joining details will be sent to your WhatsApp & email.";
+    button.textContent = "Seat Reserved ✓";
+    form.reset();
+  } else {
+    status.style.color = "#a3140b";
+    status.textContent = "Could not save your details. Please check your connection and try again.";
     button.disabled = false;
+    button.innerHTML = originalButtonContent;
+  }
+});
+
+// Optional accessibility enhancements for keyboard users (Escape key to close modal, Enter on focused labels)
+document.addEventListener("keydown", event => {
+  const toggle = document.getElementById("privacy-modal-toggle");
+  if (!toggle) return;
+  if (event.key === "Escape" && toggle.checked) {
+    toggle.checked = false;
+  } else if (event.key === "Enter" && document.activeElement && document.activeElement.getAttribute("for") === "privacy-modal-toggle") {
+    event.preventDefault();
+    toggle.checked = !toggle.checked;
   }
 });
