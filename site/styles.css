@@ -281,3 +281,23 @@
     padding: 12px 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+  .modal-backdrop {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(7, 19, 42, 0.94);
+  }
+  .hero-coach-panel, .form-card, .modal-window {
+    box-shadow: 0 4px 18px rgba(7, 19, 42, 0.12);
+  }
+  .fact {
+    box-shadow: 0 2px 8px rgba(19, 41, 77, 0.06);
+  }
+  .takeaway-card {
+    transition: transform 0.2s ease;
+  }
+}
