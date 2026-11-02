@@ -10,28 +10,344 @@
   <meta property="og:description" content="Free Live Bootcamp with Ananya Madhavan (Celebrity Leadership Coach | ICF Certified) · 19 Nov · 8:00–9:30 PM IST">
   <meta property="og:image" content="/assets/ananya-madhavan.webp">
   <link rel="icon" type="image/webp" href="/assets/outsmart-logo-190.webp">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="preload" as="image" href="/assets/ananya-madhavan-400w.webp" imagesrcset="/assets/ananya-madhavan-400w.webp 400w, /assets/ananya-madhavan-800w.webp 800w, /assets/ananya-madhavan-1024w.webp 1024w" imagesizes="(max-width: 690px) 380px, 440px" fetchpriority="high">
   <script src="/script.js" defer></script>
-  <!-- Facebook Pixel Code -->
+    <!-- Meta Pixel Code (Lazy-loaded on first user interaction) -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+    }(window,document);
     fbq('init', '2234780970421853');
     fbq('track', 'PageView');
+
+    (function() {
+      var loaded = false;
+      function loadPixel() {
+        if (loaded) return;
+        loaded = true;
+        ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(evt) {
+          window.removeEventListener(evt, loadPixel);
+        });
+        clearTimeout(timer);
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        document.head.appendChild(s);
+      }
+      var timer = setTimeout(loadPixel, 8000);
+      ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, loadPixel, { once: true, passive: true });
+      });
+    })();
   </script>
-  <noscript>
-    <img height="1" width="1" alt=""
-      src="https://www.facebook.com/tr?id=2234780970421853&amp;ev=PageView&amp;noscript=1">
-  </noscript>
-  <!-- End Facebook Pixel Code -->
   <title>First Time Manager Playbook | Free Live Bootcamp | OutSmart</title>
-  <style>
+  <style>:root{color-scheme:light;--navy:#192d43;--ink:#07132a;--blue:#0b80dd;--light:#f4f9fd;--muted:#3a526e;--white:#fefefe}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}a{color:inherit}button{cursor:pointer}.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}.skip-link{position:absolute;top:-60px;left:16px;z-index:10;background:#fff;padding:12px 16px}.skip-link:focus{top:16px}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #004e9d;outline-offset:3px}.site-header{background:var(--navy)}.header-inner{height:84px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:block;width:150px;height:78px;overflow:hidden;position:relative}.brand img{display:block;position:absolute;width:210px;height:auto;max-width:none;left:-30px;top:-15px}.header-cta{color:#fff;text-decoration:none;font-weight:750;font-size:14px;padding:12px 17px;border:1px solid #7bbaff;border-radius:999px;white-space:nowrap}.header-cta span,.hero-link span,.submit-button span{margin-left:12px}.header-cta:hover{background:#ffffff1a}.hero{overflow:hidden;background:radial-gradient(circle at 79% 36%,#e4f5ff 0,transparent 28%),linear-gradient(180deg,#fff 0%,#f7fbfe 100%)}.hero-grid{min-height:666px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:30px;align-items:center;padding-block:64px 72px}.hero-copy{position:relative;z-index:1}.eyebrow,.section-kicker{font-size:12px;letter-spacing:.16em;font-weight:850;color:var(--blue);margin:0 0 20px}.eyebrow{display:flex;align-items:center;gap:10px}.pulse-dot{display:inline-block;width:8px;height:8px;background:var(--blue);border-radius:50%;box-shadow:0 0 0 5px #dbefff}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(44px,5.4vw,74px);line-height:1.06;letter-spacing:-.055em;margin-bottom:18px;max-width:720px}h1 em{font-style:normal;color:var(--blue)}.hero-subtitle{font-size:clamp(22px,2.4vw,31px);font-weight:760;letter-spacing:-.035em;margin-bottom:14px}.hero-description{color:var(--muted);font-size:17px;line-height:1.65;max-width:550px;margin-bottom:33px}.event-facts{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:29px}.fact{display:flex;align-items:center;gap:10px;padding:12px 15px;background:#fff;border:1px solid #dbeaf7;border-radius:14px;box-shadow:0 8px 22px #13294d0a}.fact-icon{color:var(--blue);font-size:12px;font-weight:900}.fact div{display:flex;flex-direction:column;gap:2px}.fact-label{font-size:10px;letter-spacing:.13em;color:#5d7188;font-weight:800}.fact strong{font-size:13px}.hero-link{display:inline-flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;background:var(--blue);border-radius:11px;padding:16px 20px;font-size:15px;font-weight:800;box-shadow:0 8px 18px #0b80dd29}.hero-link:hover,.submit-button:hover{background:#075da8}.hero-art{height:554px;max-width:460px;width:100%;justify-self:end;position:relative;overflow:hidden;border-radius:35px;background:#e5f4ff;border:1px solid #bfdeff;box-shadow:0 28px 65px #11233a1b;isolation:isolate}.hero-art img{position:absolute;max-width:none;width:850px;height:auto;left:-399px;top:-160px;z-index:-1}.art-glow{position:absolute;inset:auto -60px -75px -60px;height:170px;background:linear-gradient(0deg,#e6f6ff,#e6f6ff00)}.art-stamp{position:absolute;bottom:20px;right:20px;width:75px;height:75px;display:grid;place-content:center;text-align:center;background:var(--blue);color:white;border-radius:50%;transform:rotate(10deg);font-size:15px;line-height:1.05;font-weight:900;box-shadow:0 10px 25px #0b80dd50}.details{background:#fff;padding:88px 0}.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}.details h2{max-width:540px;font-size:clamp(32px,3.8vw,51px);letter-spacing:-.045em;line-height:1.13;margin:0}.details-copy{padding-top:30px;color:var(--muted);font-size:18px;line-height:1.65}.details-copy p{max-width:480px;margin-bottom:18px}.coach-line{display:flex;align-items:center;gap:16px;border-top:1px solid #d9e8f4;margin-top:31px;padding-top:24px;color:var(--ink)}.coach-line>span{width:43px;height:43px;border-radius:13px;background:#e4f4ff;color:var(--blue);display:grid;place-items:center;font-size:26px}.coach-line div{display:flex;flex-direction:column;line-height:1.35}.coach-line strong{font-size:15px}.coach-line div span{font-size:13px;color:var(--muted)}.enroll-section{background:var(--navy);color:white;padding:90px 0 100px;scroll-margin-top:0}.enroll-grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(40px,7vw,112px);align-items:start}.enroll-intro{padding-top:28px}.enroll-intro .section-kicker{color:#76bdff}.enroll-intro h2{font-size:clamp(42px,5vw,66px);letter-spacing:-.052em;line-height:1.05;margin-bottom:22px}.enroll-intro>p:not(.section-kicker){max-width:390px;color:#cbd9e8;font-size:18px;line-height:1.65}.mini-date{display:flex;align-items:center;gap:18px;margin-top:40px}.mini-date strong{font-size:22px;color:#fff;border:1px solid #5d9ed8;border-radius:12px;padding:14px}.mini-date span{line-height:1.45;color:#cbd9e8}.form-card{background:#fff;color:var(--ink);padding:clamp(24px,3.4vw,44px);border-radius:25px;box-shadow:0 24px 54px #0613243d}.form-heading{margin-bottom:26px}.form-step{color:var(--blue);font-size:12px;font-weight:850;letter-spacing:.12em}.form-heading h3{font-size:31px;letter-spacing:-.035em;margin:8px 0 3px}.form-heading p{font-size:14px;color:var(--muted);margin:0}.field{margin-bottom:19px}.field label{display:block;font-weight:750;font-size:14px;margin-bottom:9px}.field input{display:block;width:100%;height:50px;border:1px solid #b6c9db;background:#fff;color:var(--ink);border-radius:10px;padding:0 14px}.field input::placeholder{color:#788ba0}.field input[aria-invalid="true"]{border-color:#b42318}.field-help,.field-error{display:block;font-size:12px;line-height:1.4;margin-top:5px}.field-help{color:#5c7083}.field-error{color:#a3140b;min-height:0}.submit-button{width:100%;border:0;background:var(--blue);color:#fff;border-radius:10px;min-height:54px;padding:14px 17px;font-weight:800;display:flex;align-items:center;justify-content:space-between;margin-top:24px}.submit-button:disabled{opacity:.65;cursor:wait}.form-status{min-height:0;font-size:13px;line-height:1.5;color:#a3140b;margin:10px 0 0}.form-status:empty{display:none}.form-note{font-size:12px;line-height:1.5;color:#5c7083;margin:13px 0 0}.site-footer{background:#102337;color:#d2e1ed}.footer-inner{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px}.footer-inner p{margin:0}.footer-inner strong{color:#55b4ff}@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:45px;padding-top:60px}.hero-copy{max-width:740px}.hero-art{justify-self:center;max-width:530px}.details-grid{gap:38px}.enroll-grid{gap:40px}}@media(max-width:690px){.wrap{width:min(100% - 36px,520px)}.header-inner{height:70px}.brand{width:125px;height:68px}.brand img{width:185px;left:-29px;top:-14px}.header-cta{font-size:12px;padding:10px 12px}.hero-grid{padding-block:48px 54px;gap:32px}.hero-description{font-size:16px}.event-facts{display:grid;grid-template-columns:1fr 1fr}.fact:last-child{grid-column:1/-1}.hero-art{height:410px;max-width:400px}.hero-art img{width:690px;left:-320px;top:-132px}.details{padding:62px 0}.details-grid,.enroll-grid{grid-template-columns:1fr;gap:15px}.details-copy{padding-top:10px;font-size:16px}.enroll-section{padding:68px 0 75px}.enroll-intro{padding-top:0}.mini-date{margin-top:27px;margin-bottom:15px}.form-card{border-radius:20px}.footer-inner{padding-block:22px;align-items:flex-start;flex-direction:column;gap:8px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root{--blue-ink:#0067b5}.eyebrow,.section-kicker,.fact-icon,.form-step{color:var(--blue-ink)}.hero-link,.submit-button,.art-stamp{background:var(--blue-ink)}
+.site-header{background:#05112d}.hero-art img{left:-455px}@media(max-width:690px){.hero-art img{left:-365px}}
+@media(max-width:690px){.hero-art img{width:950px;left:-555px;top:-210px}}
+.hero-art{height:auto;aspect-ratio:4/5;max-width:460px}.hero-art img{position:absolute;inset:0;left:0;top:0;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center;z-index:0}@media(max-width:700px){.hero-art{height:auto;aspect-ratio:4/5;max-width:400px}}
+
+
+/* ==========================================================================
+   Footer Privacy Link & Pure HTML/CSS Privacy Policy Modal Popup
+   ========================================================================== */
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.footer-sep {
+  color: #435b75;
+  user-select: none;
+}
+.footer-privacy-btn {
+  color: #76bdff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.footer-privacy-btn:hover {
+  color: #ffffff;
+}
+.footer-privacy-btn:focus-visible {
+  outline: 2px solid #55b4ff;
+  outline-offset: 2px;
+}
+.footer-tagline {
+  margin: 0;
+}
+
+/* Modal Checkbox Toggle (Pure HTML & CSS) */
+.modal-toggle {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(7, 19, 42, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.modal-toggle:checked ~ .modal-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100000;
+  cursor: pointer;
+}
+.modal-window {
+  position: relative;
+  z-index: 100001;
+  background: #ffffff;
+  color: var(--ink, #07132a);
+  width: 100%;
+  max-width: 820px;
+  max-height: 88vh;
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(5, 17, 45, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #dcebf8;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-toggle:checked ~ .modal-backdrop .modal-window {
+  transform: translateY(0) scale(1);
+}
+.modal-header {
+  padding: 22px 28px;
+  border-bottom: 1px solid #eef3f8;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fafcfe;
+  flex-shrink: 0;
+}
+.modal-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #192d43;
+  margin: 0 0 4px;
+  letter-spacing: -0.03em;
+}
+.modal-meta {
+  font-size: 13px;
+  color: #5d7188;
+  font-weight: 600;
+  margin: 0;
+}
+.modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #eef4fa;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  color: #3a526e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+.modal-close:hover {
+  background: #dbeaf7;
+  color: #07132a;
+  transform: scale(1.05);
+}
+.modal-close:focus-visible {
+  outline: 2px solid #004e9d;
+  outline-offset: 2px;
+}
+.modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 28px 32px;
+  font-size: 15px;
+  line-height: 1.68;
+  color: #2c3e50;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #c3d2e2 #f1f5f9;
+}
+.modal-body::-webkit-scrollbar {
+  width: 7px;
+}
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: #c3d2e2;
+  border-radius: 4px;
+}
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #9ab3cd;
+}
+.policy-intro {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #3a526e;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef3f8;
+}
+.policy-section {
+  margin-bottom: 22px;
+}
+.policy-section h3 {
+  font-size: 15px;
+  font-weight: 750;
+  color: #07132a;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.policy-section h3::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 15px;
+  background: var(--blue-ink, #0067b5);
+  border-radius: 2px;
+}
+.policy-section p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #334b65;
+  margin: 0 0 10px;
+}
+.policy-list {
+  margin: 8px 0 12px;
+  padding-left: 20px;
+  color: #334b65;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.policy-list li {
+  margin-bottom: 6px;
+}
+.policy-list strong {
+  color: #07132a;
+  font-weight: 650;
+}
+.policy-list a {
+  color: var(--blue-ink, #0067b5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.policy-list a:hover {
+  color: #075da8;
+}
+.policy-note {
+  background: #f4f9fd;
+  border: 1px solid #dcebf8;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: #2e4764;
+  margin-top: 10px;
+}
+.modal-footer {
+  padding: 16px 28px;
+  border-top: 1px solid #eef3f8;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fafcfe;
+  flex-shrink: 0;
+}
+.modal-btn-close {
+  background: var(--blue-ink, #0067b5);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+.modal-btn-close:hover {
+  background: #075da8;
+}
+.modal-btn-close:focus-visible {
+  outline: 2px solid #004e9d;
+  outline-offset: 2px;
+}
+
+@media (max-width: 690px) {
+  .modal-backdrop {
+    padding: 12px;
+  }
+  .modal-window {
+    max-height: 94vh;
+    border-radius: 18px;
+  }
+  .modal-header {
+    padding: 18px 20px;
+  }
+  .modal-title {
+    font-size: 20px;
+  }
+  .modal-body {
+    padding: 20px;
+    font-size: 14px;
+  }
+  .modal-footer {
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  }
+  .modal-backdrop {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(7, 19, 42, 0.94);
+  }
+  .hero-coach-panel, .form-card, .modal-window {
+    box-shadow: 0 4px 18px rgba(7, 19, 42, 0.12);
+  }
+  .fact {
+    box-shadow: 0 2px 8px rgba(19, 41, 77, 0.06);
+  }
+  .takeaway-card {
+    transition: transform 0.2s ease;
+  }
+}
+
     .eyebrow-tag {
       color: #ff5400;
       font-weight: 900;
@@ -73,8 +389,16 @@
       justify-self: end;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .hero-coach-panel:hover {
-      box-shadow: 0 26px 60px rgba(11, 40, 80, 0.16);
+    @media (hover: hover) {
+      .hero-coach-panel:hover {
+        box-shadow: 0 26px 60px rgba(11, 40, 80, 0.16);
+      }
+      .takeaway-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(11, 128, 221, 0.08);
+        border-color: #b3d7f9;
+        background: #ffffff;
+      }
     }
     .hero-coach-photo {
       width: 100%;
@@ -108,7 +432,7 @@
     .hero-coach-title {
       font-size: 14px;
       font-weight: 700;
-      color: var(--blue, #0b80dd);
+      color: #0a62ad;
       margin: 0 0 10px;
       line-height: 1.35;
     }
@@ -127,7 +451,7 @@
     }
     .hero-coach-org::before {
       content: "✦";
-      color: var(--blue, #0b80dd);
+      color: #0a62ad;
       font-size: 13px;
     }
     .hero-coach-profile {
@@ -147,20 +471,14 @@
       border: 1px solid #d9e9f7;
       border-radius: 16px;
       padding: 22px 24px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-    .takeaway-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(11, 128, 221, 0.08);
-      border-color: #b3d7f9;
-      background: #ffffff;
+      transition: transform 0.2s ease;
     }
     .takeaway-tag {
       display: inline-block;
       font-size: 11px;
       font-weight: 850;
       letter-spacing: 0.12em;
-      color: var(--blue, #0b80dd);
+      color: #0a62ad;
       background: #e4f3ff;
       padding: 4px 10px;
       border-radius: 6px;
@@ -212,7 +530,7 @@
     .coach-meta .coach-title {
       font-size: 13.5px;
       font-weight: 700;
-      color: var(--blue, #0b80dd);
+      color: #0a62ad;
     }
     .coach-meta .coach-desc {
       font-size: 13.5px;
@@ -221,9 +539,9 @@
       margin: 6px 0 0;
     }
     .free-pill {
-      background: rgba(255, 84, 0, 0.12);
-      color: #ff5400;
-      border: 1px solid rgba(255, 84, 0, 0.3);
+      background: rgba(255, 140, 82, 0.15);
+      color: #ff8c52;
+      border: 1px solid rgba(255, 140, 82, 0.4);
       font-weight: 800;
       font-size: 11px;
       letter-spacing: 0.1em;
@@ -250,8 +568,7 @@
       .hero-coach-name {
         font-size: 20px;
       }
-    }
-  </style>
+    }</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -281,7 +598,7 @@
         </div>
         <div class="hero-coach-panel" aria-label="About Coach Ananya Madhavan">
           <div class="hero-coach-photo">
-            <img src="/assets/ananya-madhavan.webp" alt="Coach Ananya Madhavan - Celebrity Leadership Coach" width="1024" height="682" fetchpriority="high">
+            <img src="/assets/ananya-madhavan-800w.webp" srcset="/assets/ananya-madhavan-400w.webp 400w, /assets/ananya-madhavan-800w.webp 800w, /assets/ananya-madhavan-1024w.webp 1024w" sizes="(max-width: 690px) 380px, 440px" alt="Coach Ananya Madhavan - Celebrity Leadership Coach" width="440" height="293" fetchpriority="high" decoding="async">
           </div>
           <div class="hero-coach-info">
             <h2 class="hero-coach-name">With Ananya Madhavan</h2>
@@ -375,7 +692,7 @@
       <div class="footer-left">
         <p>© 2026 OutSmart</p>
         <span class="footer-sep" aria-hidden="true">·</span>
-        <label for="privacy-modal-toggle" class="footer-privacy-btn" role="button" tabindex="0">Privacy Policy</label>
+        <label for="privacy-modal-toggle" class="footer-privacy-btn" tabindex="0">Privacy Policy</label>
       </div>
       <p class="footer-tagline">Real skills. Real growth. <strong>Real impact.</strong></p>
     </div>
@@ -391,7 +708,7 @@
           <h2 id="privacy-modal-title" class="modal-title">Privacy Policy</h2>
           <p class="modal-meta">OutSmart World Pvt Ltd · Last updated: October 2026</p>
         </div>
-        <label for="privacy-modal-toggle" class="modal-close" aria-label="Close modal" role="button" tabindex="0">&times;</label>
+        <label for="privacy-modal-toggle" class="modal-close" aria-label="Close modal" tabindex="0">&times;</label>
       </div>
       <div class="modal-body">
         <p class="policy-intro">This Policy explains how OutSmart World Pvt Ltd (&ldquo;OutSmart&rdquo;, &ldquo;we&rdquo;) handles your information when you use our website, programs, coaching, community, events and related services (&ldquo;Services&rdquo;). By using the Services, you agree to this Policy. If you don&rsquo;t agree, please don&rsquo;t use them. It should be read with our Terms of Service, Refund Policy, Community Guidelines and any program-specific terms.</p>
@@ -526,7 +843,7 @@
         </section>
       </div>
       <div class="modal-footer">
-        <label for="privacy-modal-toggle" class="modal-btn-close" role="button" tabindex="0">Close</label>
+        <label for="privacy-modal-toggle" class="modal-btn-close" tabindex="0">Close</label>
       </div>
     </div>
   </div>

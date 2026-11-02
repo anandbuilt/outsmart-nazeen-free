@@ -82,6 +82,10 @@ form.addEventListener("submit", async event => {
   }
 
   if (saved) {
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "Lead", { content_name: "First Time Manager Playbook Bootcamp" });
+      window.fbq("track", "CompleteRegistration", { content_name: "First Time Manager Playbook Bootcamp" });
+    }
     status.style.color = "#027a48";
     status.textContent = "✓ You are registered! Your seat is reserved. Zoom joining details will be sent to your WhatsApp & email.";
     button.textContent = "Seat Reserved ✓";
