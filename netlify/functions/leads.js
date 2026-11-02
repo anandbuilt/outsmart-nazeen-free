@@ -1,4 +1,4 @@
-const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbza2VFB0G_gNn7L_9BSAlzrIqI1RxlYy-oQ1V4xzRdBZcCqSCZatrEpTIN_Bn5Y7X4h/exec";
+const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzqCuhpd9jChVmh8Gz93kxBDOZRGGIU1uOWRU-VECScAfdXGGG9OTjYkdRnEViO0Z9cPw/exec";
 
 exports.handler = async function (event) {
   if (event.httpMethod !== "POST") {
@@ -27,12 +27,26 @@ exports.handler = async function (event) {
     const upstream = await fetch(SHEET_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, fullName: name, phone, email, paymentStatus: "Pending", notes: "Registration lead; payment not verified", source: "outsmart-self-mastery-landing", submittedAt: new Date().toISOString() }),
+      body: JSON.stringify({
+        name,
+        fullName: name,
+        phone,
+        email,
+        paymentStatus: "Free / Registered",
+        notes: "First Time Manager Playbook Bootcamp registration",
+        source: "first-time-manager-playbook-bootcamp",
+        submittedAt: new Date().toISOString()
+      }),
       redirect: "follow",
-      signal: AbortSignal.timeout(12000)
+      signal: AbortSignal.timeout(15000)
     });
     const result = await upstream.json();
-    if (!upstream.ok || (result.status !== "success" && result.success !== true)) {
+    const isSuccess = upstream.ok && (
+      result.result === "success" ||
+      result.status === "success" ||
+      result.success === true
+    );
+    if (!isSuccess) {
       return { statusCode: 502, body: JSON.stringify({ error: "Could not save your details. Please try again." }) };
     }
     return { statusCode: 200, headers: { "Cache-Control": "no-store", "Content-Type": "application/json" }, body: JSON.stringify({ saved: true }) };
