@@ -17,10 +17,15 @@ exports.handler = async function (event) {
 
   const name = typeof lead.name === "string" ? lead.name.trim() : "";
   const phone = typeof lead.phone === "string" ? lead.phone.trim() : "";
+  const company = typeof lead.company === "string" ? lead.company.trim() : "";
   const email = typeof lead.email === "string" ? lead.email.trim() : "";
   const phoneDigits = phone.replace(/\D/g, "");
   if (name.length < 2 || name.length > 80 || phone.length > 20 || phoneDigits.length < 7 || phoneDigits.length > 15 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { statusCode: 400, body: JSON.stringify({ error: "Check your name, phone number, and email." }) };
+  }
+
+  if (!company || company.length > 120) {
+    return { statusCode: 400, body: JSON.stringify({ error: "Enter your company name (up to 120 characters)." }) };
   }
 
   try {
@@ -31,10 +36,11 @@ exports.handler = async function (event) {
         name,
         fullName: name,
         phone,
+        company,
         email,
         paymentStatus: "Free / Registered",
-        notes: "First Time Manager Playbook Bootcamp registration",
-        source: "first-time-manager-playbook-bootcamp",
+        notes: "Toxic Boss Survival Kit Bootcamp registration",
+        source: "toxic-boss-survival-kit-bootcamp",
         submittedAt: new Date().toISOString()
       }),
       redirect: "follow",

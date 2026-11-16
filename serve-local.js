@@ -1,6 +1,8 @@
 const http = require("node:http");
 const fs = require("node:fs/promises");
 const path = require("node:path");
+const { promisify } = require("node:util");
+const gzip = promisify(require("node:zlib").gzip);
 const { handler } = require("./netlify/functions/leads.js");
 
 const site = path.resolve(__dirname, "site");
@@ -9,6 +11,7 @@ const types = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".webp": "image/webp",
+  ".avif": "image/avif", // image-delivery-insight: serve the responsive hero format.
   ".txt": "text/plain; charset=utf-8",
   ".xml": "application/xml; charset=utf-8"
 };
@@ -41,8 +44,35 @@ http.createServer(async (request, response) => {
   }
   try {
     const data = await fs.readFile(file);
-    response.writeHead(200, { "Content-Type": types[path.extname(file)] || "application/octet-stream" });
-    response.end(request.method === "HEAD" ? undefined : data);
+    const extension = path.extname(file);
+    const headers = { "Content-Type": types[extension] || "application/octet-stream" };
+    // third-party-cookies, inspector-issues: omit cookies on cross-origin no-CORS loads.
+    if (extension === ".html") headers["Cross-Origin-Embedder-Policy"] = "credentialless";
+    const isScriptOrStyle = extension === ".js" || extension === ".css";
+    let body = data;
+
+    // document-latency-insight: compress HTML and other text used on the render path.
+    if (extension === ".html" || isScriptOrStyle) {
+      headers.Vary = "Accept-Encoding";
+      const acceptsGzip = request.headers["accept-encoding"]?.split(",").some(encoding => {
+        const [name, quality] = encoding.trim().toLowerCase().split(";");
+        return name.trim() === "gzip" && (!quality || Number(quality.split("=")[1]) > 0);
+      });
+      if (acceptsGzip && data.length >= 1024) {
+        body = await gzip(data);
+        headers["Content-Encoding"] = "gzip";
+      }
+    }
+
+    // cache-insight: match the first-party asset cache policy in site/_headers.
+    if (pathname.startsWith("/assets/")) {
+      headers["Cache-Control"] = "public, max-age=31536000, immutable";
+    } else if (isScriptOrStyle) {
+      headers["Cache-Control"] = "public, max-age=86400, stale-while-revalidate=604800";
+    }
+    headers["Content-Length"] = body.length;
+    response.writeHead(200, headers);
+    response.end(request.method === "HEAD" ? undefined : body);
   } catch {
     response.writeHead(404).end();
   }
