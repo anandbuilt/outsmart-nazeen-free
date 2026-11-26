@@ -42,7 +42,7 @@ if (!window.fbq) {
   }
 }
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCuhpd9jChVmh8Gz93kxBDOZRGGIU1uOWRU-VECScAfdXGGG9OTjYkdRnEViO0Z9cPw/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxwZ7vWD0CCTa9-i4OcAwaFNP7LJjmm1HQ-yRxmflu3t0qsrjizBHDmVCgC_bOawt3diw/exec";
 
 const form = document.getElementById("enroll-form");
 const status = document.getElementById("form-status");
@@ -110,27 +110,6 @@ form.addEventListener("submit", async event => {
     source: "toxic-boss-survival-kit-bootcamp",
     submittedAt: new Date().toISOString()
   };
-
-  const zohoAction = form.dataset.zohoAction;
-  if (zohoAction && !payload.website) {
-    const [firstName, ...lastName] = name.split(/ +/);
-    const zohoData = new FormData();
-    zohoData.set("Name_First", firstName);
-    zohoData.set("Name_Last", lastName.join(" "));
-    zohoData.set("PhoneNumber_countrycode", phone);
-    zohoData.set("SingleLine", company);
-    zohoData.set("Email", email);
-    for (const fieldName of ["zf_referrer_name", "zf_redirect_url", "zc_gad"]) {
-      zohoData.set(fieldName, form.elements.namedItem(fieldName).value);
-    }
-
-    fetch(zohoAction, {
-      method: "POST",
-      mode: "no-cors",
-      body: zohoData,
-      keepalive: true
-    }).catch(error => console.warn("Could not send the registration to Zoho Forms.", error));
-  }
 
   let saved = false;
 
